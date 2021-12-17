@@ -27,8 +27,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   --buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  --buf_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  --buf_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts) buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
@@ -66,6 +65,20 @@ nvim_lsp.flow.setup {
   capabilities = capabilities
 }
 
+nvim_lsp.html.setup {
+  cmd = {"html-languageserver", "--stdio"},
+  filetypes = {"html"},
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+nvim_lsp.cssls.setup {
+  cmd = {"css-languageserver", "--stdio"},
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {"css", "less", "scss"}
+}
+
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact" },
@@ -98,7 +111,7 @@ nvim_lsp.gopls.setup{
 
 nvim_lsp.diagnosticls.setup {
   on_attach = on_attach,
-  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown', 'pandoc' },
+  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown', 'html' },
   init_options = {
     linters = {
       eslint = {
@@ -143,14 +156,15 @@ nvim_lsp.diagnosticls.setup {
       }
     },
     formatFiletypes = {
+      html = 'prettier',
       css = 'prettier',
-      javascript = 'eslint_d',
-      javascriptreact = 'eslint_d',
+      javascript = 'prettier',
+      javascriptreact = 'prettier',
       json = 'prettier',
       scss = 'prettier',
       less = 'prettier',
       typescript = 'prettier',
-      typescriptreact = 'eslint_d',
+      typescriptreact = 'prettier',
       json = 'prettier',
       markdown = 'prettier',
     }
