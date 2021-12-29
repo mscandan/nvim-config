@@ -4,6 +4,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'tpope/vim-rhubarb' 
 	Plug 'fatih/vim-go'
 	Plug 'SirVer/ultisnips'
+  Plug 'drewtempelmeyer/palenight.vim'
 	if has("nvim")
     Plug 'neovim/nvim-lspconfig'
     Plug 'glepnir/lspsaga.nvim'
