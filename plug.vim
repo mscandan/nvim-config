@@ -5,6 +5,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'fatih/vim-go'
 	Plug 'SirVer/ultisnips'
   Plug 'drewtempelmeyer/palenight.vim'
+  Plug 'tpope/vim-commentary'
+  Plug 'airblade/vim-gitgutter'
 	if has("nvim")
     Plug 'neovim/nvim-lspconfig'
     Plug 'glepnir/lspsaga.nvim'
@@ -25,5 +27,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'hrsh7th/nvim-cmp'
     Plug 'onsails/lspkind-nvim'
     Plug 'williamboman/nvim-lsp-installer'
+    Plug 'akinsho/bufferline.nvim'
   endif
 call plug#end()
