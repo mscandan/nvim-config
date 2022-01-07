@@ -1,7 +1,8 @@
 colorscheme palenight
+
 set background=dark
 set completeopt=menuone,noselect
-
+set guifont="Hack Nerd Font"
 set relativenumber
 set nu
 set exrc
