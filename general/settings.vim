@@ -20,7 +20,7 @@ set undofile
 set incsearch
 set termguicolors
 set noshowmode
-set updatetime=50
+set updatetime=100
 set shortmess+=c
 set cmdheight=2
 set clipboard+=unnamedplus
