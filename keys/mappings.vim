@@ -12,4 +12,4 @@ nnoremap <silent> \\ <cmd>Telescope buffers<cr>
 nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
 nnoremap <silent> <C-n>  :BufferLineCycleNext<CR>
 nnoremap <silent> <C-p> :BufferLineCyclePrev<CR>
-nnoremap <silent> <leader>w :bdelete<CR> :bnext<CR>
+nnoremap <silent> <leader>wq :Bdelete! <CR>

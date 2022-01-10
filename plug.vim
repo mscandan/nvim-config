@@ -32,5 +32,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'onsails/lspkind-nvim'
     Plug 'williamboman/nvim-lsp-installer'
     Plug 'akinsho/bufferline.nvim'
+    Plug 'moll/vim-bbye'
   endif
 call plug#end()
