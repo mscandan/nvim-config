@@ -1,4 +1,4 @@
-colorscheme palenight
+colorscheme gruvbox
 
 set background=dark
 set completeopt=menuone,noselect
