@@ -74,7 +74,7 @@ nvim_lsp.html.setup {
   cmd = {"html-languageserver", "--stdio"},
   filetypes = {"html"},
   on_attach = on_attach,
-  capabilities = capabilities,
+  capabilities = capabilities
 }
 
 nvim_lsp.cssls.setup {
