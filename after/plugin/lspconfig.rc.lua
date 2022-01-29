@@ -1,17 +1,6 @@
-if !exists('g:lspconfig')
-  finish
-endif
-
-lua << EOF
---vim.lsp.set_log_level("debug")
-EOF
-
-lua << EOF
 local nvim_lsp = require('lspconfig')
 local protocol = require'vim.lsp.protocol'
 
--- Use an on_attach function to only map the following keys 
--- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -54,8 +43,6 @@ local on_attach = function(client, bufnr)
 
 end
 
-
--- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').update_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
@@ -176,15 +163,12 @@ nvim_lsp.diagnosticls.setup {
   }
 }
 
--- icon
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true,
-    -- This sets the spacing and the prefix, obviously.
     virtual_text = {
       spacing = 2,
     }
   }
 )
 
-EOF
