@@ -32,5 +32,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'williamboman/nvim-lsp-installer'
     Plug 'akinsho/bufferline.nvim'
     Plug 'moll/vim-bbye'
+    Plug 'numToStr/Comment.nvim'
   endif
 call plug#end()
