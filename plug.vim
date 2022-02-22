@@ -27,7 +27,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'hrsh7th/cmp-path' 
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'saadparwaiz1/cmp_luasnip'
-    Plug 'rafamadriz/friendly-snippets' 
     Plug 'onsails/lspkind-nvim'
     Plug 'williamboman/nvim-lsp-installer'
     Plug 'akinsho/bufferline.nvim'
