@@ -32,5 +32,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'akinsho/bufferline.nvim'
     Plug 'moll/vim-bbye'
     Plug 'numToStr/Comment.nvim'
+    Plug 'tami5/lspsaga.nvim'
   endif
 call plug#end()
