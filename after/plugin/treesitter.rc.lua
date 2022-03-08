@@ -23,7 +23,8 @@ tree_sitter.setup {
     "json5",
     "lua",
     "vim",
-    "go"
+    "go",
+    "ruby"
   },
 }
 

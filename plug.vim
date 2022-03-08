@@ -7,6 +7,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'drewtempelmeyer/palenight.vim'
   Plug 'tpope/vim-commentary'
   Plug 'airblade/vim-gitgutter'
+  Plug 'vim-ruby/vim-ruby'
+  Plug 'tpope/vim-rails'
 	if has("nvim")
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
