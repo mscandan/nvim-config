@@ -42,7 +42,6 @@ nvim_tree.setup {
     "dashboard",
     "alpha",
   },
-  auto_close = true,
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = true,
@@ -76,6 +75,11 @@ nvim_tree.setup {
     enable = true,
     ignore = true,
     timeout = 500,
+  },
+  actions = {
+      open_file = {
+          resize_window = true,
+      },
   },
   view = {
     width = 30,
