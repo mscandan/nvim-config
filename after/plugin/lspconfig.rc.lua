@@ -44,37 +44,6 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
-nvim_lsp.solargraph.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "ruby" },
-  flags = {
-    debounce_text_changes = 150
-  },
-  root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "."),
-  settings = {
-    solargraph = {
-      autoformat = true,
-      completion = true,
-      diagnostic = true,
-      folding = true,
-      references = true,
-      rename = true,
-      symbols = true
-    }
-  }
-}
-
-nvim_lsp.pyright.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
-
-nvim_lsp.flow.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
-
 nvim_lsp.html.setup {
   cmd = {"html-languageserver", "--stdio"},
   filetypes = {"html"},
