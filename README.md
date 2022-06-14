@@ -5,8 +5,9 @@
 ### Installation
 
 - Install brew
-- brew install Neovim
-- brew install --HEAD tree-sitter
-- brew install --HEAD luajit
+  - brew install neovim
+  - brew install --HEAD tree-sitter
+  - brew install --HEAD luajit
+  - brew install fd rg
 - Install Node and NPM my suggestion is NVM.
-- npm i -g typescript-language-server prettier eslint diagnostic-languageserver
+  - npm i -g typescript typescript-language-server prettier eslint diagnostic-languageserver
