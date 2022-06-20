@@ -10,4 +10,4 @@
   - brew install --HEAD luajit
   - brew install fd rg
 - Install Node and NPM my suggestion is NVM.
-  - npm i -g typescript typescript-language-server prettier eslint diagnostic-languageserver
+  - npm i -g typescript typescript-language-server prettier eslint diagnostic-languageserver vscode-langservers-extracted lua-language-server

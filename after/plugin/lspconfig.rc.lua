@@ -45,14 +45,14 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
 )
 
 nvim_lsp.html.setup {
-  cmd = {"html-languageserver", "--stdio"},
+  cmd = {"vscode-html-language-server", "--stdio"},
   filetypes = {"html"},
   on_attach = on_attach,
   capabilities = capabilities
 }
 
 nvim_lsp.cssls.setup {
-  cmd = {"css-languageserver", "--stdio"},
+  cmd = {"vscode-css-language-server", "--stdio"},
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = {"css", "less", "scss"}
