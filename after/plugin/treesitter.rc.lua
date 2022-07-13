@@ -24,7 +24,7 @@ tree_sitter.setup {
     "lua",
     "vim",
     "go",
-    "ruby"
+    "markdown"
   },
 }
 

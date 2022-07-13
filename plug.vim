@@ -35,5 +35,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'moll/vim-bbye'
     Plug 'numToStr/Comment.nvim'
     Plug 'tami5/lspsaga.nvim'
+    Plug 'navarasu/onedark.nvim'
   endif
 call plug#end()
