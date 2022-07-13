@@ -18,7 +18,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'folke/lsp-colors.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
-    Plug 'hoob3rt/lualine.nvim'
+    Plug 'nvim-lualine/lualine.nvim'
     Plug 'kyazdani42/nvim-tree.lua'
     Plug 'mbbill/undotree'
     Plug 'norcalli/nvim-colorizer.lua'
