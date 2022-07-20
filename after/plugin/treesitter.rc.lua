@@ -10,6 +10,9 @@ tree_sitter.setup {
   indent = {
     enable = false,
   },
+  rainbow = {
+    enable = true,
+  },
   ensure_installed = {
     "tsx",
     "json",

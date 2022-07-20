@@ -4,11 +4,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'tpope/vim-rhubarb' 
 	Plug 'fatih/vim-go'
 	Plug 'SirVer/ultisnips'
-  Plug 'drewtempelmeyer/palenight.vim'
   Plug 'tpope/vim-commentary'
   Plug 'airblade/vim-gitgutter'
-  Plug 'vim-ruby/vim-ruby'
-  Plug 'tpope/vim-rails'
 	if has("nvim")
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -36,5 +33,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'numToStr/Comment.nvim'
     Plug 'tami5/lspsaga.nvim'
     Plug 'navarasu/onedark.nvim'
+    Plug 'p00f/nvim-ts-rainbow'
   endif
 call plug#end()
