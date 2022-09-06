@@ -1,13 +1,32 @@
-# My personal Neovim Config
+# Install Neovim and another dependencies
+  ```sh
+    brew install neovim luajit tree-sitter fd rg
+  ```
 
-## This configuration focused on JavaScript/TypeScript development.
+# Configuration
+  - LSPs
 
-### Installation
+    - Lua
+      ```sh
+        brew install lua-language-server
+      ```
 
-- Install brew
-  - brew install neovim
-  - brew install --HEAD tree-sitter
-  - brew install --HEAD luajit
-  - brew install fd rg lua-language-server
-- Install Node and NPM my suggestion is NVM.
-  - npm i -g typescript typescript-language-server prettier eslint diagnostic-languageserver vscode-langservers-extracted eslint_d
+    - TypeScript
+      ```sh
+        npm install -g typescript-language-server typescript vscode-langservers-extracted
+      ```
+
+    - Prettier
+      ```sh
+        brew install fsouza/prettierd/prettierd
+      ```
+  - Plugins
+    - to install plugins we need to install plugin manager
+      ```sh
+        git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+         ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+      ```
+    - to install plugins run this command in neovim
+        ```sh
+          :PackerInstall
+        ```
