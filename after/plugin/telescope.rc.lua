@@ -20,6 +20,7 @@ telescope.setup {
   extensions = {
     file_browser = {
       theme = "dropdown",
+      hidden = true,
       -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
       mappings = {
@@ -46,7 +47,7 @@ vim.keymap.set('n', ';f',
   function()
     builtin.find_files({
       no_ignore = false,
-      hidden = true
+      hidden = true,
     })
   end)
 vim.keymap.set('n', ';r', function()
@@ -71,8 +72,6 @@ vim.keymap.set("n", "sf", function()
     respect_gitignore = false,
     hidden = true,
     grouped = true,
-    previewer = false,
     initial_mode = "normal",
-    layout_config = { height = 40 }
   })
 end)
