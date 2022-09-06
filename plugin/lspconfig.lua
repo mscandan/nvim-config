@@ -65,6 +65,31 @@ nvim_lsp.tsserver.setup {
   capabilities = capabilities
 }
 
+
+nvim_lsp.gopls.setup{
+	on_attach = on_attach,
+	capabilities = capabilities,
+	cmd = {"gopls", "serve"},
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+			linksInHover = false,
+			codelenses = {
+				generate = true,
+				gc_details = true,
+				regenerate_cgo = true,
+				tidy = true,
+				upgrade_depdendency = true,
+				vendor = true,
+			},
+			usePlaceholders = true,
+		},
+	},
+}
+
 nvim_lsp.sourcekit.setup {
   on_attach = on_attach,
 }
@@ -77,7 +102,6 @@ nvim_lsp.sumneko_lua.setup {
         -- Get the language server to recognize the `vim` global
         globals = { 'vim' },
       },
-
       workspace = {
         -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file("", true),
