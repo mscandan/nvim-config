@@ -47,5 +47,5 @@ packer.startup(function(use)
 
   use 'navarasu/onedark.nvim'
   use 'xiyaowong/nvim-transparent'
-
+  use 'tpope/vim-fugitive'
 end)
