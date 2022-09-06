@@ -13,3 +13,8 @@
     ```sh
       npm install -g typescript-language-server typescript
     ```
+
+  - Prettier
+  ```sh
+    brew install fsouza/prettierd/prettierd
+  ```
