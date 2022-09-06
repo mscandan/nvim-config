@@ -1,6 +1,6 @@
 # Install Neovim and another dependencies
   ```sh
-    brew install neovim luajit tree-sitter fd
+    brew install neovim luajit tree-sitter fd rg
   ```
 
 # LSPs
@@ -11,10 +11,10 @@
 
   - TypeScript
     ```sh
-      npm install -g typescript-language-server typescript
+      npm install -g typescript-language-server typescript vscode-langservers-extracted
     ```
 
   - Prettier
-  ```sh
-    brew install fsouza/prettierd/prettierd
-  ```
+    ```sh
+      brew install fsouza/prettierd/prettierd
+    ```
