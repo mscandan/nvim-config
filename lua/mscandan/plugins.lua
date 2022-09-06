@@ -16,6 +16,8 @@ packer.startup(function(use)
 
   use 'hoob3rt/lualine.nvim' -- Statusline
 
+  use 'neovim/nvim-lspconfig' -- LSP
+
 end)
 
 
