@@ -54,7 +54,6 @@ vim.keymap.set('n', ';f',
       respect_gitignore = true,
       hidden = true,
       grouped = true,
-      initial_mode = "normal",
     })
   end)
 vim.keymap.set('n', ';r', function()
