@@ -47,6 +47,12 @@ telescope.setup {
 
 telescope.load_extension("file_browser")
 
+vim.keymap.set("n", "gd", "<Cmd>Telescope lsp_definitions<CR>")
+vim.keymap.set("n", "gr", "<Cmd>Telescope lsp_references<CR>")
+vim.keymap.set("n", "gi", "<Cmd>Telescope lsp_implementations<CR>")
+vim.keymap.set("n", "<Space>ca", "<Cmd>Telescope lsp_code_actions<CR>")
+vim.keymap.set("n", "<Space>D", "<Cmd>Telescope lsp_type_definitions<CR>")
+
 vim.keymap.set('n', ';f',
   function()
     builtin.find_files({

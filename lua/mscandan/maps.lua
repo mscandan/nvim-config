@@ -2,6 +2,7 @@ local keymap = vim.keymap
 
 keymap.set('n', '<Space>n', ':bnext<Return>')
 keymap.set('n', '<Space>p', ':bprev<Return>')
+keymap.set('n', '<Space>w', ':bdel<Return>')
 
 -- Increment/decrement
 keymap.set('n', '+', '<C-a>')
