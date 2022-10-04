@@ -6,6 +6,16 @@
 # Configuration
   - LSPs
 
+    - Go
+      ```sh
+        brew install gopls
+      ```
+
+    - Rust
+      ```sh
+        brew install rust-analyzer
+      ```
+
     - Lua
       ```sh
         brew install lua-language-server

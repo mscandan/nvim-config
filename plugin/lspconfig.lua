@@ -58,6 +58,13 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
+require'lspconfig'.rust_analyzer.setup{
+  cmd = { "rust-analyzer" },
+  filetypes = { "rust" },
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
 nvim_lsp.html.setup {
   cmd = {"vscode-html-language-server", "--stdio"},
   filetypes = {"html"},
@@ -83,7 +90,7 @@ nvim_lsp.tsserver.setup {
 nvim_lsp.gopls.setup{
 	on_attach = on_attach,
 	capabilities = capabilities,
-	cmd = {"gopls", "serve"},
+	cmd = { "gopls", "serve" },
 	settings = {
 		gopls = {
 			analyses = {
