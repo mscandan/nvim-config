@@ -50,4 +50,5 @@ packer.startup(function(use)
   use 'xiyaowong/nvim-transparent'
   use 'tpope/vim-fugitive'
   use "ellisonleao/gruvbox.nvim"
+  use { "williamboman/mason.nvim" }
 end)
