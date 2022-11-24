@@ -58,7 +58,12 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
-require'lspconfig'.rust_analyzer.setup{
+nvim_lsp.clangd.setup{
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+nvim_lsp.rust_analyzer.setup{
   cmd = { "rust-analyzer" },
   filetypes = { "rust" },
   on_attach = on_attach,
@@ -109,10 +114,6 @@ nvim_lsp.gopls.setup{
 			usePlaceholders = true,
 		},
 	},
-}
-
-nvim_lsp.sourcekit.setup {
-  on_attach = on_attach,
 }
 
 nvim_lsp.sumneko_lua.setup {
