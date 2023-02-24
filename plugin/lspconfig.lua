@@ -91,6 +91,11 @@ nvim_lsp.tsserver.setup {
   capabilities = capabilities
 }
 
+nvim_lsp.tailwindcss.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact" }
+}
 
 nvim_lsp.gopls.setup{
 	on_attach = on_attach,
