@@ -51,4 +51,5 @@ packer.startup(function(use)
   use 'tpope/vim-fugitive'
   use "ellisonleao/gruvbox.nvim"
   use { "williamboman/mason.nvim" }
+  use 'David-Kunz/jester'
 end)
