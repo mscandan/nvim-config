@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/Users/mscandan/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
     url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
+  jester = {
+    loaded = true,
+    path = "/Users/mscandan/.local/share/nvim/site/pack/packer/start/jester",
+    url = "https://github.com/David-Kunz/jester"
+  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/Users/mscandan/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
