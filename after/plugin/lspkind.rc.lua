@@ -1,5 +1,6 @@
 local status, lspkind = pcall(require, "lspkind")
-if (not status) then return end
+
+if not status then return end
 
 lspkind.init({
   -- enables text annotations

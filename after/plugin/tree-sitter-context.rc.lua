@@ -1,8 +1,6 @@
 local status, tsContext  = pcall(require, 'treesitter-context')
 
-if not status then
-  return
-end
+if not status then return end
 
 tsContext.setup{
     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
