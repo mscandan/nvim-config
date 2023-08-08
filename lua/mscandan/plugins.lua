@@ -11,11 +11,11 @@ return require('packer').startup(function(use)
   -- fuzzy finding
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.2',
-    -- or                            , branch = '0.1.x',
     requires = {
       { 'nvim-lua/plenary.nvim' },
       { 'nvim-treesitter/nvim-treesitter',           run = ':TSUpdate' },
-      { 'nvim-telescope/telescope-file-browser.nvim' }
+      { 'nvim-telescope/telescope-file-browser.nvim' },
+      { 'kyazdani42/nvim-web-devicons' }
     }
 
   }
@@ -37,7 +37,7 @@ return require('packer').startup(function(use)
       { 'neovim/nvim-lspconfig' },             -- Required
       { 'williamboman/mason.nvim' },           -- Optional
       { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-      {"lukas-reineke/lsp-format.nvim"},
+      { "lukas-reineke/lsp-format.nvim" },
 
       -- Autocompletion
       { 'hrsh7th/nvim-cmp' },     -- Required

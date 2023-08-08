@@ -1,5 +1,6 @@
 require("mscandan.remap")
 require('mscandan.general')
+require('mscandan.highlights')
 require('mscandan.plugins')
 
 local has = function(x)

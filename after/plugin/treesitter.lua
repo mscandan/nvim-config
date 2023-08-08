@@ -8,18 +8,18 @@ end
 treesitter.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
   ensure_installed = {
-      "tsx",
-      "toml",
-      "json",
-      "yaml",
-      "css",
-      "html",
-      "lua",
-      "scss",
-      "go",
-      "typescript",
-      "javascript",
-    },
+    "tsx",
+    "toml",
+    "json",
+    "yaml",
+    "css",
+    "html",
+    "lua",
+    "scss",
+    "go",
+    "typescript",
+    "javascript",
+  },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
