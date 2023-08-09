@@ -38,6 +38,7 @@ return require('packer').startup(function(use)
       { 'williamboman/mason.nvim' },           -- Optional
       { 'williamboman/mason-lspconfig.nvim' }, -- Optional
       { "lukas-reineke/lsp-format.nvim" },
+      { "nvim-treesitter/nvim-treesitter-context" },
 
       -- Autocompletion
       { 'hrsh7th/nvim-cmp' },     -- Required
