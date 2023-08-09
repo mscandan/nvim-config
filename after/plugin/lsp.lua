@@ -10,6 +10,7 @@ lsp.ensure_installed({
   'gopls',
   'rust_analyzer',
   'lua_ls',
+  'yamlls',
 })
 
 -- Fix Undefined global 'vim'
