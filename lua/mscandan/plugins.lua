@@ -17,7 +17,6 @@ return require('packer').startup(function(use)
       { 'nvim-telescope/telescope-file-browser.nvim' },
       { 'kyazdani42/nvim-web-devicons' }
     }
-
   }
 
   -- git
@@ -27,6 +26,16 @@ return require('packer').startup(function(use)
 
   -- colorschema
   use 'navarasu/onedark.nvim'
+
+  -- Statusline
+  use 'nvim-lualine/lualine.nvim'
+
+  -- Bufferline
+  use {
+    'akinsho/bufferline.nvim',
+    tag = "*",
+    requires = 'nvim-tree/nvim-web-devicons'
+  }
 
   -- lsp
   use {
