@@ -73,7 +73,7 @@ vim.keymap.set('n', ';e', function()
   builtin.diagnostics()
 end)
 vim.keymap.set("n", "sf", function()
- telescope.extensions.file_browser.file_browser({
+  telescope.extensions.file_browser.file_browser({
     path = "%:p:h",
     cwd = telescope_buffer_dir(),
     respect_gitignore = true,
@@ -82,7 +82,3 @@ vim.keymap.set("n", "sf", function()
     initial_mode = "normal",
   })
 end)
-
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
