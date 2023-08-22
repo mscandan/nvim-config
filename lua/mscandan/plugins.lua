@@ -49,6 +49,12 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- comments
+  use 'numToStr/Comment.nvim'
+
+  -- autopairs
+  use 'windwp/nvim-autopairs'
+
   --golang
   use 'fatih/vim-go'
 end)
