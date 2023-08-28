@@ -59,14 +59,14 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
   vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
   vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
-
-  if client.supports_method('textDocument/formatting') then
-    local format_status, formatter = pcall(require, 'lsp-format')
-    if format_status then
-      formatter.on_attach(client)
-    end
-  end
 end)
+
+
+lsp.format_on_save({
+  servers = {
+    ["null-ls"] = { "html", "javascript", "typescript", "prettier", "lua" },
+  },
+})
 
 lsp.setup()
 

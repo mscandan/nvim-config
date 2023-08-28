@@ -41,6 +41,8 @@ return require('packer').startup(function(use)
       { 'williamboman/mason-lspconfig.nvim' }, -- Optional
       { "lukas-reineke/lsp-format.nvim" },
       { "nvim-treesitter/nvim-treesitter-context" },
+      { "jose-elias-alvarez/null-ls.nvim" },
+      { "jay-babu/mason-null-ls.nvim" },
 
       -- Autocompletion
       { 'hrsh7th/nvim-cmp' },     -- Required
