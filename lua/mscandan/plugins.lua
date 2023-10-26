@@ -1,55 +1,62 @@
-local status, packer = pcall(require, "packer")
-if (not status) then
-  print("Packer is not installed")
-  return
-end
+-- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
-vim.cmd [[packadd packer.nvim]]
+-- Only required if you have packer configured as `opt`
+vim.cmd([[packadd packer.nvim]])
 
-packer.startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use 'nvim-lualine/lualine.nvim'       -- Statusline
-  use 'nvim-lua/plenary.nvim'           -- Common utilities
-  use 'onsails/lspkind-nvim'            -- vscode-like pictograms
-  use 'hrsh7th/cmp-buffer'              -- nvim-cmp source for buffer words
-  use 'hrsh7th/cmp-nvim-lsp'            -- nvim-cmp source for neovim's built-in LSP
-  use 'hrsh7th/nvim-cmp'                -- Completion
-  use 'neovim/nvim-lspconfig'           -- LSP
-  use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
-  use 'MunifTanjim/prettier.nvim'       -- Prettier plugin for Neovim's built-in LSP client
+return require("packer").startup(function(use)
+	-- Packer can manage itself
+	use("wbthomason/packer.nvim")
 
-  use 'glepnir/lspsaga.nvim'            -- LSP UIs
-  use 'L3MON4D3/LuaSnip'
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
-  use 'nvim-treesitter/nvim-treesitter-context'
-  use 'kyazdani42/nvim-web-devicons' -- File icons
-  use 'nvim-telescope/telescope.nvim'
-  use 'nvim-telescope/telescope-file-browser.nvim'
-  use 'windwp/nvim-autopairs'
-  use 'windwp/nvim-ts-autotag'
-  use 'norcalli/nvim-colorizer.lua'
-  use 'folke/zen-mode.nvim'
-  use({
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  })
-  use 'akinsho/nvim-bufferline.lua'
-  -- use 'github/copilot.vim'
+	-- fuzzy finding
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.2",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
+			{ "nvim-telescope/telescope-file-browser.nvim" },
+			{ "kyazdani42/nvim-web-devicons" },
+		},
+	})
 
-  use 'lewis6991/gitsigns.nvim'
-  use 'dinhhuy258/git.nvim'   -- For git blame & browse
-  use 'numToStr/Comment.nvim' -- comment plugin
-  use 'p00f/nvim-ts-rainbow'
+	-- git
+	use("lewis6991/gitsigns.nvim")
+	use("dinhhuy258/git.nvim")
+	use("tpope/vim-fugitive")
 
-  use 'fatih/vim-go'
+	-- colorschema
+	use("navarasu/onedark.nvim")
 
-  use 'navarasu/onedark.nvim'
-  use 'xiyaowong/nvim-transparent'
-  use 'tpope/vim-fugitive'
-  use "ellisonleao/gruvbox.nvim"
-  use { "williamboman/mason.nvim" }
-  use 'David-Kunz/jester'
+	-- Statusline
+	use("nvim-lualine/lualine.nvim")
+
+	-- lsp
+	use({
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v2.x",
+		requires = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" }, -- Required
+			{ "williamboman/mason.nvim" }, -- Optional
+			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+			{ "lukas-reineke/lsp-format.nvim" },
+			{ "nvim-treesitter/nvim-treesitter-context" },
+			{ "jose-elias-alvarez/null-ls.nvim" },
+			{ "jay-babu/mason-null-ls.nvim" },
+
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" }, -- Required
+			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+			{ "L3MON4D3/LuaSnip" }, -- Required
+		},
+	})
+
+	-- comments
+	use("numToStr/Comment.nvim")
+
+	-- autopairs
+	use("windwp/nvim-autopairs")
+
+	--golang
+	use("fatih/vim-go")
 end)
