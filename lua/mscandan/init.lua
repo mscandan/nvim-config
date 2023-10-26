@@ -1,14 +1,14 @@
 require("mscandan.remap")
-require('mscandan.general')
-require('mscandan.highlights')
-require('mscandan.plugins')
+require("mscandan.general")
+require("mscandan.highlights")
+require("mscandan.plugins")
 
 local has = function(x)
-  return vim.fn.has(x) == 1
+	return vim.fn.has(x) == 1
 end
 
-local is_mac = has "macunix"
+local is_mac = has("macunix")
 
 if is_mac then
-  require('mscandan.macos')
+	require("mscandan.macos")
 end
