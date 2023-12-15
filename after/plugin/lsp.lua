@@ -13,6 +13,7 @@ lsp.ensure_installed({
 	"rust_analyzer",
 	"lua_ls",
 	"yamlls",
+	"cssls",
 })
 
 -- Fix Undefined global 'vim'
@@ -67,10 +68,10 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<C-k>", function()
 		vim.diagnostic.goto_prev()
 	end, opts)
-	vim.keymap.set("n", "<leader>vca", function()
+	vim.keymap.set("n", "<leader>ca", function()
 		vim.lsp.buf.code_action()
 	end, opts)
-	vim.keymap.set("n", "<leader>vrn", function()
+	vim.keymap.set("n", "<leader>rn", function()
 		vim.lsp.buf.rename()
 	end, opts)
 	vim.keymap.set("i", "<C-h>", function()
@@ -82,7 +83,17 @@ end)
 
 lsp.format_on_save({
 	servers = {
-		["null-ls"] = { "html", "javascript", "typescript", "prettier", "lua", "typescriptreact", "javascriptreact" },
+		["null-ls"] = {
+			"html",
+			"javascript",
+			"typescript",
+			"prettier",
+			"lua",
+			"typescriptreact",
+			"javascriptreact",
+			"scss",
+			"css",
+		},
 	},
 })
 
