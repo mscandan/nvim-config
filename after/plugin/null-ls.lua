@@ -27,9 +27,10 @@ null_ls.setup({
 	debug = true,
 	sources = {
 		code_actions.eslint_d,
-		formatting.eslint_d,
 		formatting.prettierd,
+		formatting.eslint_d,
 
 		formatting.stylua,
+		formatting.rustfmt,
 	},
 })

@@ -93,6 +93,7 @@ lsp.format_on_save({
 			"javascriptreact",
 			"scss",
 			"css",
+			"rust",
 		},
 	},
 })
