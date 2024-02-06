@@ -59,4 +59,10 @@ return require("packer").startup(function(use)
 
 	--golang
 	use("fatih/vim-go")
+
+	-- debug
+	use("mfussenegger/nvim-dap")
+
+	-- testing
+	use("David-Kunz/jester")
 end)

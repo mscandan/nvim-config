@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/Users/mscandan/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  jester = {
+    loaded = true,
+    path = "/Users/mscandan/.local/share/nvim/site/pack/packer/start/jester",
+    url = "https://github.com/David-Kunz/jester"
+  },
   ["lsp-format.nvim"] = {
     loaded = true,
     path = "/Users/mscandan/.local/share/nvim/site/pack/packer/start/lsp-format.nvim",
@@ -143,6 +148,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mscandan/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/Users/mscandan/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
