@@ -65,4 +65,6 @@ return require("packer").startup(function(use)
 
 	-- testing
 	use("David-Kunz/jester")
+
+	use("dmmulroy/ts-error-translator.nvim")
 end)
