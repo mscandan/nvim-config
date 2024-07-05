@@ -7,7 +7,7 @@ end
 mason_null_ls.setup({
 	ensure_installed = {
 		"eslint_d",
-		"prettierd",
+		"prettier",
 		"stylua",
 	},
 	automatic_installation = true,
@@ -27,7 +27,7 @@ null_ls.setup({
 	debug = true,
 	sources = {
 		code_actions.eslint_d,
-		formatting.prettierd,
+		formatting.prettier,
 		formatting.eslint_d,
 
 		formatting.stylua,
