@@ -1,0 +1,5 @@
+vim.keymap.set("n", "<Space>bn", function()
+	local current_buffer_num = vim.fn.bufnr()
+	local current_file_path = vim.api.nvim_buf_get_name(current_buffer_num)
+	print("current buffer num = ", current_buffer_num, "\tcurrent file path = ", current_file_path)
+end)
