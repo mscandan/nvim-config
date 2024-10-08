@@ -67,4 +67,12 @@ return require("packer").startup(function(use)
 	use("David-Kunz/jester")
 
 	use("dmmulroy/ts-error-translator.nvim")
+
+	-- comments
+	use({
+		"folke/todo-comments.nvim",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+		},
+	})
 end)
