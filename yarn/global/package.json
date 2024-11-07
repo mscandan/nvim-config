@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "create-jest": "^29.7.0",
-    "create-vite": "^5.5.5",
-    "nx": "^20.0.2"
-  }
-}
