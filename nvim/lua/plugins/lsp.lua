@@ -1,11 +1,11 @@
 return {
 	"VonHeikemen/lsp-zero.nvim",
 	branch = "v2.x",
-  dependencies = {
+	dependencies = {
 		-- LSP Support
-		{ "neovim/nvim-lspconfig" },       -- Required
-		{ "williamboman/mason.nvim" },     -- Optional
-		{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+		{ "neovim/nvim-lspconfig" }, -- Required
+		{ "mason-org/mason.nvim" }, -- Optional
+		{ "mason-org/mason-lspconfig.nvim" }, -- Optional
 		{ "lukas-reineke/lsp-format.nvim" },
 		{ "nvim-treesitter/nvim-treesitter-context" },
 		{ "nvimtools/none-ls.nvim" },
@@ -26,15 +26,15 @@ return {
 
 		lsp.preset("recommended")
 
-		lsp.ensure_installed({
-			"ts_ls",
-			"eslint",
-			"gopls",
-			"rust_analyzer",
-			"lua_ls",
-			"yamlls",
-			"cssls",
-		})
+		-- lsp.ensure_installed({
+		-- 	"ts_ls",
+		-- 	"eslint",
+		-- 	"gopls",
+		-- 	"rust_analyzer",
+		-- 	"lua_ls",
+		-- 	"yamlls",
+		-- 	"cssls",
+		-- })
 
 		-- Fix Undefined global 'vim'
 		lsp.nvim_workspace()
@@ -115,6 +115,7 @@ return {
 					"scss",
 					"css",
 					"rust",
+					"go",
 				},
 			},
 		})
@@ -124,5 +125,5 @@ return {
 		vim.diagnostic.config({
 			virtual_text = true,
 		})
-	end
+	end,
 }
