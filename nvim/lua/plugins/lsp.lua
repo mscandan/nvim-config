@@ -1,129 +1,84 @@
 return {
-	"VonHeikemen/lsp-zero.nvim",
-	branch = "v2.x",
+	"neovim/nvim-lspconfig",
 	dependencies = {
-		-- LSP Support
-		{ "neovim/nvim-lspconfig" }, -- Required
-		{ "mason-org/mason.nvim" }, -- Optional
-		{ "mason-org/mason-lspconfig.nvim" }, -- Optional
-		{ "lukas-reineke/lsp-format.nvim" },
-		{ "nvim-treesitter/nvim-treesitter-context" },
-		{ "nvimtools/none-ls.nvim" },
-		{ "jay-babu/mason-null-ls.nvim" },
-
-		-- Autocompletion
-		{ "hrsh7th/nvim-cmp" }, -- Required
-		{ "hrsh7th/cmp-nvim-lsp" }, -- Required
-		{ "L3MON4D3/LuaSnip" }, -- Required
+		{ "mason-org/mason.nvim" },
+		{ "mason-org/mason-lspconfig.nvim" },
+		{ "hrsh7th/nvim-cmp" },
+		{ "hrsh7th/cmp-nvim-lsp" },
+		{ "L3MON4D3/LuaSnip" },
 	},
 
 	config = function()
-		local lsp_status, lsp = pcall(require, "lsp-zero")
-
-		if not lsp_status then
-			return
-		end
-
-		lsp.preset("recommended")
-
-		-- lsp.ensure_installed({
-		-- 	"ts_ls",
-		-- 	"eslint",
-		-- 	"gopls",
-		-- 	"rust_analyzer",
-		-- 	"lua_ls",
-		-- 	"yamlls",
-		-- 	"cssls",
-		-- })
-
-		-- Fix Undefined global 'vim'
-		lsp.nvim_workspace()
-
-		local cmp_status, cmp = pcall(require, "cmp")
-		if not cmp_status then
-			return
-		end
-
-		local cmp_select = { behavior = cmp.SelectBehavior.Select }
-		local cmp_mappings = lsp.defaults.cmp_mappings({
-			["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-			["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-			["<C-y>"] = cmp.mapping.confirm({ select = true }),
-			["<C-Space>"] = cmp.mapping.complete(),
+		-- Global LSP capabilities (picked up by all servers via vim.lsp.enable)
+		vim.lsp.config("*", {
+			capabilities = require("cmp_nvim_lsp").default_capabilities(),
 		})
 
-		cmp_mappings["<Tab>"] = nil
-		cmp_mappings["<S-Tab>"] = nil
-
-		lsp.setup_nvim_cmp({
-			mapping = cmp_mappings,
-		})
-
-		lsp.set_preferences({
-			suggest_lsp_servers = false,
-		})
-
-		lsp.set_sign_icons({
-			error = " ",
-			warn = " ",
-			info = " ",
-			hint = " ",
-		})
-
-		lsp.on_attach(function(client, bufnr)
-			local opts = { buffer = bufnr, remap = false }
-
-			vim.keymap.set("n", "K", function()
-				vim.lsp.buf.hover()
-			end, opts)
-			vim.keymap.set("n", "<leader>vws", function()
-				vim.lsp.buf.workspace_symbol()
-			end, opts)
-			vim.keymap.set("n", "<leader>vd", function()
-				vim.diagnostic.open_float()
-			end, opts)
-			vim.keymap.set("n", "<C-j>", function()
-				vim.diagnostic.goto_next()
-			end, opts)
-			vim.keymap.set("n", "<C-k>", function()
-				vim.diagnostic.goto_prev()
-			end, opts)
-			vim.keymap.set("n", "<leader>ca", function()
-				vim.lsp.buf.code_action()
-			end, opts)
-			vim.keymap.set("n", "<leader>rn", function()
-				vim.lsp.buf.rename()
-			end, opts)
-			vim.keymap.set("i", "<C-h>", function()
-				vim.lsp.buf.signature_help()
-			end, opts)
-			vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-			vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
-		end)
-
-		lsp.format_on_save({
-			servers = {
-				["null-ls"] = {
-					"html",
-					"javascript",
-					"typescript",
-					"prettier",
-					"json",
-					"lua",
-					"typescriptreact",
-					"javascriptreact",
-					"scss",
-					"css",
-					"rust",
-					"go",
+		-- Fix "undefined global vim" in lua files
+		vim.lsp.config("lua_ls", {
+			settings = {
+				Lua = {
+					diagnostics = { globals = { "vim" } },
 				},
 			},
 		})
 
-		lsp.setup()
+		-- mason-lspconfig v2 automatically calls vim.lsp.enable() for every
+		-- Mason-installed server, so no setup_handlers needed.
+		require("mason").setup()
+		require("mason-lspconfig").setup()
 
+		-- Keybindings applied whenever any LSP attaches to a buffer
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
+			callback = function(ev)
+				local opts = { buffer = ev.buf, remap = false }
+				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+				vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
+				vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
+				vim.keymap.set("n", "<C-j>", vim.diagnostic.goto_next, opts)
+				vim.keymap.set("n", "<C-k>", vim.diagnostic.goto_prev, opts)
+				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+				vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+				vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+				vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+			end,
+		})
+
+		-- Diagnostic signs (nvim 0.11 API)
 		vim.diagnostic.config({
 			virtual_text = true,
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = " ",
+					[vim.diagnostic.severity.WARN] = " ",
+					[vim.diagnostic.severity.INFO] = " ",
+					[vim.diagnostic.severity.HINT] = " ",
+				},
+			},
+		})
+
+		-- Completion
+		local cmp = require("cmp")
+		local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
+		cmp.setup({
+			snippet = {
+				expand = function(args)
+					require("luasnip").lsp_expand(args.body)
+				end,
+			},
+			mapping = cmp.mapping.preset.insert({
+				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+				["<C-y>"] = cmp.mapping.confirm({ select = true }),
+				["<C-Space>"] = cmp.mapping.complete(),
+			}),
+			sources = cmp.config.sources({
+				{ name = "nvim_lsp" },
+				{ name = "luasnip" },
+			}),
 		})
 	end,
 }

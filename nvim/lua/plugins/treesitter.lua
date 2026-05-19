@@ -1,59 +1,39 @@
 return {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function()
-        require("nvim-treesitter.configs").setup({
-            -- A list of parser names, or "all"
-            ensure_installed = {
-                "vimdoc",
-                "c",
-                "rust",
-                "tsx",
-                "toml",
-                "json",
-                "yaml",
-                "css",
-                "html",
-                "lua",
-                "scss",
-                "go",
-                "typescript",
-                "javascript",
-                "tsx",
-            },
+	"nvim-treesitter/nvim-treesitter",
+	lazy = false, -- new nvim-treesitter does not support lazy loading
+	build = ":TSUpdate",
+	config = function()
+		-- setup() only accepts install_dir in the new rewrite; no configs/highlight/indent here
+		require("nvim-treesitter").setup()
 
-            -- Install parsers synchronously (only applied to `ensure_installed`)
-            sync_install = false,
+		-- Install parsers (no-op if already installed)
+		require("nvim-treesitter").install({
+			"vimdoc", "c", "rust", "tsx", "toml", "json", "yaml",
+			"css", "html", "lua", "scss", "go", "typescript", "javascript", "templ",
+		})
 
-            -- Automatically install missing parsers when entering buffer
-            -- Recommendation: set to false if you don"t have `tree-sitter` CLI installed locally
-            auto_install = true,
+		-- Highlighting is now opt-in per filetype via vim.treesitter.start()
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = {
+				"typescript", "typescriptreact", "javascript", "javascriptreact",
+				"lua", "go", "rust", "c", "html", "css", "scss",
+				"json", "yaml", "toml", "vimdoc", "markdown", "templ",
+			},
+			callback = function()
+				vim.treesitter.start()
+			end,
+		})
 
-            indent = {
-                enable = true
-            },
-
-            highlight = {
-                -- `false` will disable the whole extension
-                enable = true,
-
-                -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-                -- Set this to `true` if you depend on "syntax" being enabled (like for indentation).
-                -- Using this option may slow down your editor, and you may see some duplicate highlights.
-                -- Instead of true it can also be a list of languages
-                additional_vim_regex_highlighting = { "markdown" },
-            },
-        })
-
-        local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-        treesitter_parser_config.templ = {
-            install_info = {
-                url = "https://github.com/vrischmann/tree-sitter-templ.git",
-                files = { "src/parser.c", "src/scanner.c" },
-                branch = "master",
-            },
-        }
-
-        vim.treesitter.language.register("templ", "templ")
-    end
+		-- Treesitter-based indentation
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = {
+				"typescript", "typescriptreact", "javascript", "javascriptreact",
+				"lua", "go", "rust", "c", "html", "css", "scss",
+				"json", "yaml", "toml", "templ",
+			},
+			callback = function()
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end,
+		})
+	end,
 }

@@ -1,11 +1,8 @@
 return {
   "nvim-telescope/telescope.nvim",
 
-  tag = "0.1.5",
-
   dependencies = {
     "nvim-lua/plenary.nvim",
-    { "nvim-treesitter/nvim-treesitter",           run = ":TSUpdate" },
     { "nvim-telescope/telescope-file-browser.nvim" },
     { "kyazdani42/nvim-web-devicons" },
   },
@@ -22,6 +19,9 @@ return {
 
     telescope.setup({
       defaults = {
+        preview = {
+          treesitter = false,
+        },
         mappings = {
           n = {
             ["q"] = actions.close,
